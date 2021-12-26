@@ -4,6 +4,7 @@ type Post = {
     id: number;
     url: string;
     likes: number;
+    description: string;
     comments: Comment[];
 }
 

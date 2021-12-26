@@ -1,7 +1,7 @@
 import Filter from '../filter/filter';
-import Comments from '../comments/comments';
 import Post from '../../types/post';
 import PostPreview from '../post-preview/post-preview';
+import PostPopup from '../post-popup/post-popup';
 
 type MainProps = {
     posts: Post[];
@@ -123,31 +123,7 @@ const Main = ({ posts }: MainProps): JSX.Element => {
             </section>
 
             {/* <!-- Полноэкранный показ изображения --> */}
-            <section className="big-picture  overlay  hidden">
-                <h2 className="big-picture__title  visually-hidden">Просмотр фотографии</h2>
-                <div className="big-picture__preview">
-
-                    {/* <!-- Просмотр изображения --> */}
-                    <div className="big-picture__img">
-                        <img src="img/logo-background-3.jpg" alt="Девушка в купальнике" width="600" height="600" />
-                    </div>
-
-                    {/* <!-- Информация об изображении. Подпись, комментарии, количество лайков --> */}
-                    <div className="big-picture__social  social">
-                        <div className="social__header">
-                            <img className="social__picture" src="img/avatar-1.svg" alt="Аватар автора фотографии" width="35" height="35" />
-                            <p className="social__caption">Тестим новую камеру! =)</p>
-                            <p className="social__likes">Нравится <span className="likes-count">356</span></p>
-                        </div>
-
-                        {/* <!-- Комментарии к изображению --> */}
-                        <Comments></Comments>
-                    </div>
-
-                    {/* <!-- Кнопка для выхода из полноэкранного просмотра изображения --> */}
-                    <button type="reset" className="big-picture__cancel  cancel" id="picture-cancel">Закрыть</button>
-                </div>
-            </section>
+            <PostPopup />
         </main>
     );
 }

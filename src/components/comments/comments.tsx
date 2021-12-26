@@ -1,15 +1,18 @@
-const Comments = (): JSX.Element => {
+import Comment from "../../types/comment";
+
+type CommentsProps = {
+    comments: Comment[];
+}
+
+const Comments = ({ comments }: CommentsProps): JSX.Element => {
     return (<>
-        <div className="social__comment-count">5 из <span className="comments-count">125</span> комментариев</div>
+        <div className="social__comment-count">5 из <span className="comments-count">{comments.length}</span> комментариев</div>
         <ul className="social__comments">
-            <li className="social__comment">
-                <img className="social__picture" src="img/avatar-4.svg" alt="Аватар комментатора фотографии" width="35" height="35" />
-                <p className="social__text">Мега фото! Просто обалдеть. Как вам так удалось?</p>
-            </li>
-            <li className="social__comment">
-                <img className="social__picture" src="img/avatar-3.svg" alt="Аватар комментатора фотографии" width="35" height="35" />
-                <p className="social__text">Да это фоташоп!!!!!!!!</p>
-            </li>
+
+            {comments.map(comment => <li key={comment.id} className="social__comment">
+                <img className="social__picture" src={comment.avatar} alt="Аватар комментатора фотографии" width="35" height="35" />
+                <p className="social__text">{comment.message}</p>
+            </li>)}
         </ul>
 
         {/* <!-- Кнопка для загрузки новой порции комментариев --> */}
