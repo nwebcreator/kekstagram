@@ -1,11 +1,16 @@
 import Filter from '../filter/filter';
 import Comments from '../comments/comments';
+import Post from '../../types/post';
+import PostPreview from '../post-preview/post-preview';
 
-const Main = (): JSX.Element => {
+type MainProps = {
+    posts: Post[];
+}
+const Main = ({ posts }: MainProps): JSX.Element => {
     return (
         <main>
             {/* <!-- Фильтрация изображений от других пользователей --> */}
-            <Filter></Filter>
+            <Filter />
 
             {/* <!-- Контейнер для изображений от других пользователей --> */}
             <section className="pictures  container">
@@ -113,6 +118,7 @@ const Main = (): JSX.Element => {
                 </section>
 
                 {/* <!-- Здесь будут изображения других пользователей --> */}
+                {posts.map(post => <PostPreview key={post.id} post={post} />)}
 
             </section>
 
